@@ -19,6 +19,7 @@ search.addEventListener('click', () => {
             const humidity = document.querySelector('.weather-details .humidity span');
             const wind = document.querySelector('.weather-details .wind span');
             const timeElement = document.querySelector('.time-box .time');
+            const dateElement = document.querySelector('.date-box .date');
 
             const temp = json.main.temp.toFixed(0);
             const weatherMain = json.weather[0].main;
@@ -59,8 +60,12 @@ search.addEventListener('click', () => {
             hours = hours % 12;
             hours = hours ? hours : 12; // If the hour is 0, set it to 12 (for midnight/midday)
             const formattedLocalTime = `${hours}:${minutes} ${ampm}`;
+             timeElement.textContent = `Local Time: ${formattedLocalTime}`;
 
-        timeElement.textContent = `Local Time: ${formattedLocalTime}`;
+              // Get the full date
+            const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
+            const formattedDate = localTime.toLocaleDateString(undefined, options);
+            dateElement.textContent = `Date: ${formattedDate}`;
 
         } else {
             console.error('Weather data not available');
