@@ -31,7 +31,7 @@ search.addEventListener('click', () => {
             temperature.textContent = `${temp}°C`;
             description.textContent = json.weather[0].description;
             humidity.textContent = `${json.main.humidity}%`;
-            wind.textContent = `${json.wind.speed} m/s`;
+            wind.textContent = `${json.wind.speed} km/h`;
 
             // Determine if it's day or night
             const isDay = currentTime >= sunrise && currentTime <= sunset;
